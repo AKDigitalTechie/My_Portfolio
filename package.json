@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "ajay-kumar-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,16 +11,11 @@
     "typecheck": "tsc --noEmit -p tsconfig.app.json"
   },
   "dependencies": {
-    "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
-    "@supabase/supabase-js": "^2.57.4",
-    "@types/three": "^0.186.0",
     "framer-motion": "^14.9.0",
-    "gsap": "^3.15.0",
     "lucide-react": "^0.446.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "three": "^0.187.0"
+    "react-icons": "^5.7.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",

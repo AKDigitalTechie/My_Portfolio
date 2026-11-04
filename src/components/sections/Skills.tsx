@@ -3,17 +3,17 @@ import {
   Atom, Triangle, Component, Braces, FileCode, Code2, Palette, Layers,
   Hash, Network, LayoutTemplate, Webhook, Boxes, Container,
   CloudCog, GitBranch, FlaskConical, MousePointerClick,
-  BarChart3, Repeat, CheckCircle, Gauge, Bug, Workflow,
+  BarChart3, Repeat, CheckCircle, Gauge, Bug, Workflow, Drama,
 } from 'lucide-react';
 import { skillCategories } from '@/data/skills';
-import { Reveal, SectionHeading, StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
+import { SectionHeading, StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Monitor, Server, Database, Cloud, TestTube, Sparkles,
   Atom, Triangle, Component, Braces, FileCode, Code2, Palette, Layers,
   Hash, Network, LayoutTemplate, Webhook, Boxes, Container,
   CloudCog, GitBranch, FlaskConical, MousePointerClick,
-  BarChart3, Repeat, CheckCircle, Gauge, Bug, Workflow,
+  BarChart3, Repeat, CheckCircle, Gauge, Bug, Workflow, Drama,
 };
 
 export function Skills() {

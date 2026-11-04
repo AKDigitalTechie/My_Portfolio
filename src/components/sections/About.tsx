@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Code2, MapPin, Briefcase, GraduationCap, Sparkles, Copy, Check } from 'lucide-react';
 import { profile } from '@/data/profile';
 import { Reveal, SectionHeading } from '@/components/ui/Reveal';
@@ -86,7 +85,7 @@ export function About() {
                     <div className="flex items-center gap-3 text-sm">
                       <GraduationCap className="h-4 w-4 text-primary-400 shrink-0" />
                       <span className="text-text-muted">Education:</span>
-                      <span className="font-medium">BE — Telecommunication</span>
+                      <span className="font-medium">BE — Telecommunications / Technology</span>
                     </div>
                   </div>
 

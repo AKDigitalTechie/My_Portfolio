@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Copy, Check, Send, Download } from 'lucide-react';
 import { profile } from '@/data/profile';
-import { Reveal, SectionHeading } from '@/components/ui/Reveal';
+import { Reveal } from '@/components/ui/Reveal';
 
 interface FormData {
   name: string;
@@ -49,11 +49,14 @@ export function Contact() {
     e.preventDefault();
     if (!validate()) return;
 
-    const subject = encodeURIComponent(`Portfolio Contact from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`,
+    const text = encodeURIComponent(
+      `Hi Ajay, I'm ${form.name} (${form.email}).\n\n${form.message}`,
     );
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    window.open(
+      `https://wa.me/${profile.whatsappNumber}?text=${text}`,
+      '_blank',
+      'noopener,noreferrer',
+    );
     setMailtoSent(true);
     setTimeout(() => setMailtoSent(false), 4000);
   };
@@ -172,7 +175,8 @@ export function Contact() {
                 </div>
 
                 <a
-                  href={`mailto:${profile.email}?subject=Resume Request`}
+                  href={profile.resumeUrl}
+                  download={profile.resumeFileName}
                   className="btn-primary w-full mt-6"
                 >
                   <Download className="h-4 w-4" />
@@ -248,12 +252,12 @@ export function Contact() {
                   className="flex items-center gap-2 text-sm text-green-400 glass rounded-xl px-4 py-3 border-green-400/20"
                 >
                   <Check className="h-4 w-4" />
-                  Your email app should now be open with the message ready to send.
+                  WhatsApp should now be open with your message ready to send.
                 </motion.div>
               )}
 
               <p className="text-xs text-text-muted text-center">
-                This form opens your email client. No data is stored.
+                This form opens WhatsApp with your message. No data is stored.
               </p>
             </form>
           </Reveal>

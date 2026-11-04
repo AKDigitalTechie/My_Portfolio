@@ -9,8 +9,11 @@ export const profile = {
   location: 'Bangalore, India',
   email: 'ajay.kumar.eshwaran@gmail.com',
   phone: '+91 9739708657',
+  whatsappNumber: '919380564028',
   linkedin: 'https://www.linkedin.com/in/ajay-kumar-a34142229',
   linkedinHandle: 'in/ajay-kumar-a34142229',
+  resumeUrl: `${import.meta.env.BASE_URL}Ajay_Kumar_Resume_SDE.pdf`,
+  resumeFileName: 'Ajay_Kumar_Resume_SDE.pdf',
   about: `I'm a Software Engineer with 3.7+ years of professional experience developing scalable web applications, enterprise software, RESTful APIs, and full-stack solutions.
 
 Currently working at ABB, I contribute to enterprise industrial software and digital platforms. My professional journey includes experience at Omnicom Global Solutions, where I worked on frontend development, backend microservices, application optimization, and enterprise solutions.

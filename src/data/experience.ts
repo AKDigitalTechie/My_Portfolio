@@ -18,7 +18,7 @@ export const experiences: ExperienceItem[] = [
       'Developing enterprise industrial software and digital platforms for automation applications, including Asset Performance Management.',
       'Building scalable full-stack modules using React, Angular, middleware services, SQL Server, and MongoDB.',
       'Collaborating with global Agile teams.',
-      'Designing and executing automation tests for functionality, integration, and production readiness.',
+      'Designing and executing UI and API automation tests using Playwright for functionality, integration, and production readiness.',
     ],
   },
   {

@@ -71,7 +71,7 @@ export function Footer() {
             © {new Date().getFullYear()} Ajay Kumar. All rights reserved.
           </p>
           <p className="text-xs text-text-muted font-mono">
-            Built with React, Three.js & TypeScript
+            Designed & developed by Ajay Kumar
           </p>
         </div>
       </div>

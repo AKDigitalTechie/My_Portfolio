@@ -52,10 +52,11 @@ export const skillCategories: SkillCategory[] = [
     name: 'Testing',
     icon: 'TestTube',
     skills: [
+      { name: 'Playwright', icon: 'Drama' },
+      { name: 'UI Automation (Playwright)', icon: 'MousePointerClick' },
+      { name: 'API Automation (Playwright)', icon: 'Webhook' },
       { name: 'Jest', icon: 'FlaskConical' },
       { name: 'Vitest', icon: 'TestTube' },
-      { name: 'UI Automation', icon: 'MousePointerClick' },
-      { name: 'API Testing', icon: 'Webhook' },
     ],
   },
   {

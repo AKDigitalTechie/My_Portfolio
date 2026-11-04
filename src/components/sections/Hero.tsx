@@ -1,47 +1,31 @@
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, MapPin, Building2, Briefcase } from 'lucide-react';
+import {
+  ArrowDown, Download, MapPin, Building2, Briefcase,
+} from 'lucide-react';
+import { SiReact, SiAngular, SiTypescript, SiDotnet, SiMongodb } from 'react-icons/si';
+import { DiMsqlServer } from 'react-icons/di';
+import { VscAzureDevops } from 'react-icons/vsc';
+import type { IconType } from 'react-icons';
 import { profile } from '@/data/profile';
 
-const Workspace3DScene = lazy(() =>
-  import('@/components/three/Workspace3DScene').then((m) => ({ default: m.Workspace3DScene })),
-);
-
-function HeroFallback() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary-500/15 blur-[120px]" />
-      <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-accent-500/15 blur-[100px]" />
-      <div className="relative glass-strong rounded-2xl p-8 max-w-md border border-white/10">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex gap-1.5">
-            <div className="h-3 w-3 rounded-full bg-red-400/60" />
-            <div className="h-3 w-3 rounded-full bg-yellow-400/60" />
-            <div className="h-3 w-3 rounded-full bg-green-400/60" />
-          </div>
-        </div>
-        <div className="space-y-2 font-mono text-sm">
-          <p className="text-text-muted">{'>'} const developer = {`{`}</p>
-          <p className="text-primary-400 pl-4">name: <span className="text-text">'Ajay Kumar'</span>,</p>
-          <p className="text-primary-400 pl-4">role: <span className="text-text">'Software Engineer'</span>,</p>
-          <p className="text-primary-400 pl-4">location: <span className="text-text">'Bangalore'</span></p>
-          <p className="text-text-muted">{`}`}</p>
-        </div>
-      </div>
-    </div>
-  );
+interface TechItem {
+  label: string;
+  icon?: IconType;
+  color?: string;
+  image?: string;
 }
 
-function hasWebGL(): boolean {
-  try {
-    const canvas = document.createElement('canvas');
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-    return !!gl;
-  } catch {
-    return false;
-  }
-}
+const techStack: TechItem[] = [
+  { label: 'React', icon: SiReact, color: '#61DAFB' },
+  { label: 'Angular', icon: SiAngular, color: '#DD0031' },
+  { label: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { label: 'C# / .NET', icon: SiDotnet, color: '#7C5CFF' },
+  { label: 'SQL Server', icon: DiMsqlServer, color: '#E53935' },
+  { label: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+  { label: 'Azure DevOps', icon: VscAzureDevops, color: '#2899F5' },
+  { label: 'Playwright', image: `${import.meta.env.BASE_URL}icons/playwright.svg` },
+];
 
 const heroIcons = [
   { icon: Briefcase, label: 'Experience', value: '3.7+ Years' },
@@ -49,21 +33,52 @@ const heroIcons = [
   { icon: MapPin, label: 'Location', value: 'Bangalore, India' },
 ];
 
+function TechIcons({ size, className = '' }: { size: 'sm' | 'lg'; className?: string }) {
+  const tile = size === 'lg' ? 'h-11 w-11 xl:h-12 xl:w-12' : 'h-10 w-10';
+  const glyph = size === 'lg' ? 'h-6 w-6 xl:h-7 xl:w-7' : 'h-5 w-5';
+
+  return (
+    <div className={`flex gap-1.5 xl:gap-2 ${className}`}>
+      {techStack.map((tech, i) => (
+        <motion.div
+          key={tech.label}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.9 + i * 0.07 }}
+        >
+          <motion.div
+            animate={{ y: [0, -4, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
+            className={`group relative flex ${tile} items-center justify-center rounded-xl glass hover:bg-white/[0.08] hover:border-primary-500/40 transition-colors`}
+            aria-label={tech.label}
+          >
+            {tech.icon ? (
+              <tech.icon
+                className={`${glyph} transition-transform group-hover:scale-110`}
+                style={{ color: tech.color }}
+              />
+            ) : (
+              <img
+                src={tech.image}
+                alt={tech.label}
+                className={`${glyph} transition-transform group-hover:scale-110`}
+              />
+            )}
+            <span className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md glass-strong px-2 py-1 text-[11px] font-mono text-text opacity-0 group-hover:opacity-100 transition-opacity">
+              {tech.label}
+            </span>
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
 export function Hero({ onReady }: { onReady?: () => void }) {
-  const [webglAvailable, setWebglAvailable] = useState(true);
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setWebglAvailable(hasWebGL());
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (mounted) {
-      const timer = setTimeout(() => onReady?.(), 600);
-      return () => clearTimeout(timer);
-    }
-  }, [mounted, onReady]);
+    const timer = setTimeout(() => onReady?.(), 600);
+    return () => clearTimeout(timer);
+  }, [onReady]);
 
   const scrollToContent = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -71,15 +86,47 @@ export function Hero({ onReady }: { onReady?: () => void }) {
 
   return (
     <section id="home" className="relative min-h-screen w-full overflow-hidden">
-      {/* 3D Scene Layer */}
+      {/* Background layer */}
       <div className="absolute inset-0">
-        {webglAvailable ? (
-          <Suspense fallback={<HeroFallback />}>
-            <Workspace3DScene className="absolute inset-0" />
-          </Suspense>
-        ) : (
-          <HeroFallback />
-        )}
+        <div className="absolute inset-0 bg-grid opacity-30" />
+        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary-500/15 blur-[120px]" />
+        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-accent-500/15 blur-[100px]" />
+      </div>
+
+      {/* Profile photo */}
+      <div className="absolute right-6 md:right-12 lg:right-20 xl:right-32 top-[54%] -translate-y-1/2 z-10 hidden lg:block">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative mx-auto w-fit"
+        >
+          <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-primary-500 to-accent-500 opacity-60 blur-xl" />
+          <div className="relative rounded-3xl bg-gradient-to-br from-primary-500 to-accent-500 p-[2px]">
+            <img
+              src={`${import.meta.env.BASE_URL}profile.jpg`}
+              alt={profile.name}
+              className="h-[300px] w-[300px] xl:h-[340px] xl:w-[340px] rounded-3xl object-cover"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-6 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+            </span>
+            <span className="text-sm text-text-muted font-mono">Available for opportunities</span>
+          </div>
+        </motion.div>
+
+        <TechIcons size="lg" className="mt-5 justify-center" />
       </div>
 
       {/* Gradient overlay for text readability */}
@@ -87,13 +134,33 @@ export function Hero({ onReady }: { onReady?: () => void }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
 
       {/* Hero Content */}
-      <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 md:px-12 lg:px-20 py-28 lg:py-0">
         <div className="max-w-3xl">
+          {/* Mobile / tablet: photo, availability and tech icons */}
+          <div className="lg:hidden mb-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative w-fit"
+            >
+              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 opacity-60 blur-lg" />
+              <div className="relative rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 p-[2px]">
+                <img
+                  src={`${import.meta.env.BASE_URL}profile.jpg`}
+                  alt={profile.name}
+                  className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl object-cover"
+                />
+              </div>
+            </motion.div>
+            <TechIcons size="sm" className="mt-5 flex-wrap" />
+          </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 mb-8"
+            className="inline-flex lg:hidden items-center gap-2 rounded-full glass px-4 py-2 mb-8"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60" />
@@ -139,7 +206,7 @@ export function Hero({ onReady }: { onReady?: () => void }) {
               Explore My Work
               <ArrowDown className="h-4 w-4" />
             </button>
-            <a href={`mailto:${profile.email}`} className="btn-secondary">
+            <a href={profile.resumeUrl} download={profile.resumeFileName} className="btn-secondary">
               <Download className="h-4 w-4" />
               Download Resume
             </a>

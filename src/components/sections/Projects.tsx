@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, X, Layers } from 'lucide-react';
 import { projects } from '@/data/projects';
-import { Reveal, SectionHeading, StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
+import { SectionHeading, StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
 import { Project } from '@/data/projects';
 
 export function Projects() {
@@ -18,7 +18,7 @@ export function Projects() {
         </SectionHeading>
 
         <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <StaggerItem key={project.title}>
               <button
                 onClick={() => setSelected(project)}

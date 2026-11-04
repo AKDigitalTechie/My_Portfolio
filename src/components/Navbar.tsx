@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, Code2 } from 'lucide-react';
 import { navLinks } from '@/data/navigation';
+import { profile } from '@/data/profile';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 
@@ -63,13 +64,14 @@ export function Navbar() {
               </div>
 
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => handleNavClick('contact')}
+                <a
+                  href={profile.resumeUrl}
+                  download={profile.resumeFileName}
                   className="hidden md:inline-flex btn-primary text-sm py-2 px-4"
                 >
                   <Download className="h-4 w-4" />
                   Resume
-                </button>
+                </a>
 
                 <button
                   onClick={() => setIsOpen(!isOpen)}
@@ -122,13 +124,14 @@ export function Navbar() {
                   </motion.button>
                 ))}
 
-                <button
-                  onClick={() => handleNavClick('contact')}
+                <a
+                  href={profile.resumeUrl}
+                  download={profile.resumeFileName}
                   className="btn-primary mt-4 w-full text-sm"
                 >
                   <Download className="h-4 w-4" />
                   Download Resume
-                </button>
+                </a>
               </div>
             </motion.div>
           </motion.div>
