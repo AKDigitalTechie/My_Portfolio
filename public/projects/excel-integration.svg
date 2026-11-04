@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Spreadsheet exported to an Excel file">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#151A33"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4F8CFF"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#7FA8FF"/>
+    </marker>
+  </defs>
+  <rect width="480" height="240" fill="url(#bg)"/>
+
+  <!-- data grid -->
+  <rect x="20" y="30" width="250" height="180" rx="12" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+  <rect x="20" y="30" width="250" height="26" rx="12" fill="#22A06B" fill-opacity="0.9"/>
+  <rect x="20" y="44" width="250" height="12" fill="#22A06B" fill-opacity="0.9"/>
+  <g font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#fff">
+    <text x="34" y="48">Name</text><text x="104" y="48">Region</text><text x="164" y="48">Sales</text><text x="222" y="48">Growth</text>
+  </g>
+  <g stroke="#ffffff" stroke-opacity="0.1">
+    <path d="M20 82H270M20 108H270M20 134H270M20 160H270M20 186H270"/>
+    <path d="M94 56V210M154 56V210M212 56V210"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="10" fill="#E2E8F0">
+    <text x="30" y="74">Alpha</text><text x="102" y="74">North</text><text x="162" y="74">48,200</text><text x="220" y="74" fill="#34D399">+12%</text>
+    <text x="30" y="100">Bravo</text><text x="102" y="100">South</text><text x="162" y="100">36,910</text><text x="220" y="100" fill="#34D399">+7%</text>
+    <text x="30" y="126">Cobalt</text><text x="102" y="126">East</text><text x="162" y="126">52,340</text><text x="220" y="126" fill="#34D399">+21%</text>
+    <text x="30" y="152">Delta</text><text x="102" y="152">West</text><text x="162" y="152">29,775</text><text x="220" y="152" fill="#F87171">-3%</text>
+    <text x="30" y="178">Echo</text><text x="102" y="178">North</text><text x="162" y="178">41,120</text><text x="220" y="178" fill="#34D399">+9%</text>
+    <text x="30" y="204">Foxtrot</text><text x="102" y="204">East</text><text x="162" y="204">33,560</text><text x="220" y="204" fill="#34D399">+5%</text>
+  </g>
+
+  <!-- export arrow -->
+  <path d="M286 120 H338" stroke="#7FA8FF" stroke-width="3" stroke-linecap="round" fill="none" marker-end="url(#arrow)"/>
+  <text x="312" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="#94A3B8">Export</text>
+
+  <!-- xlsx file -->
+  <path d="M356 54 H410 L440 84 V186 H356 Z" fill="#ffffff" fill-opacity="0.08" stroke="url(#acc)" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M410 54 V84 H440" fill="none" stroke="url(#acc)" stroke-width="2" stroke-linejoin="round"/>
+  <rect x="368" y="108" width="60" height="44" rx="6" fill="#22A06B"/>
+  <text x="398" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="800" fill="#fff">XLSX</text>
+  <rect x="368" y="160" width="40" height="6" rx="3" fill="#ffffff" fill-opacity="0.25"/>
+</svg>

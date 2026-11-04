@@ -38,8 +38,8 @@ export function Navbar() {
                 <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 group-hover:shadow-lg group-hover:shadow-primary-500/30 transition-shadow">
                   <Code2 className="h-5 w-5 text-white" strokeWidth={2} />
                 </div>
-                <span className="font-display font-semibold text-sm hidden sm:block">
-                  Ajay Kumar
+                <span className="font-display font-semibold text-sm">
+                  Welcome to my portfolio
                 </span>
               </button>
 

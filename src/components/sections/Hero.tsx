@@ -85,7 +85,7 @@ export function Hero({ onReady }: { onReady?: () => void }) {
   };
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden">
+    <section id="home" className="relative w-full overflow-hidden">
       {/* Background layer */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-grid opacity-30" />
@@ -133,42 +133,11 @@ export function Hero({ onReady }: { onReady?: () => void }) {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/60 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/40" />
 
+      {/* First screen: hero content + scroll indicator */}
+      <div className="relative min-h-screen">
       {/* Hero Content */}
       <div className="relative z-10 flex min-h-screen flex-col justify-center px-6 md:px-12 lg:px-20 py-28 lg:py-0">
         <div className="max-w-3xl">
-          {/* Mobile / tablet: photo, availability and tech icons */}
-          <div className="lg:hidden mb-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative w-fit"
-            >
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 opacity-60 blur-lg" />
-              <div className="relative rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 p-[2px]">
-                <img
-                  src={`${import.meta.env.BASE_URL}profile.jpg`}
-                  alt={profile.name}
-                  className="h-28 w-28 sm:h-32 sm:w-32 rounded-2xl object-cover"
-                />
-              </div>
-            </motion.div>
-            <TechIcons size="sm" className="mt-5 flex-wrap" />
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-flex lg:hidden items-center gap-2 rounded-full glass px-4 py-2 mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
-            </span>
-            <span className="text-sm text-text-muted font-mono">Available for opportunities</span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -250,6 +219,39 @@ export function Hero({ onReady }: { onReady?: () => void }) {
           />
         </div>
       </motion.div>
+      </div>
+
+      {/* Mobile / tablet: photo, availability and tech icons (below the scroll indicator) */}
+      <div className="relative z-10 lg:hidden px-6 md:px-12 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center"
+        >
+          <div className="relative w-fit">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 opacity-60 blur-lg" />
+            <div className="relative rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 p-[2px]">
+              <img
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
+                alt={profile.name}
+                className="h-48 w-48 sm:h-56 sm:w-56 rounded-2xl object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full glass px-4 py-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400/60" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+            </span>
+            <span className="text-sm text-text-muted font-mono">Available for opportunities</span>
+          </div>
+
+          <TechIcons size="sm" className="mt-5 flex-wrap justify-center" />
+        </motion.div>
+      </div>
     </section>
   );
 }

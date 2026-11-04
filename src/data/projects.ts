@@ -4,6 +4,7 @@ export interface Project {
   description: string;
   techStack: string[];
   gradient: string;
+  image: string;
 }
 
 export const projects: Project[] = [
@@ -14,6 +15,7 @@ export const projects: Project[] = [
       'An interactive application for building and managing flowcharts with drag-and-drop nodes, custom connectors, and real-time canvas updates.',
     techStack: ['React', 'TypeScript', 'Redux'],
     gradient: 'from-primary-500/20 to-accent-500/20',
+    image: 'flowchart-builder.svg',
   },
   {
     title: 'Campaign Management Platform',
@@ -22,6 +24,7 @@ export const projects: Project[] = [
       'Enterprise frontend components and campaign management workflows with responsive layouts, API integration, and role-based access.',
     techStack: ['React', 'TypeScript', 'REST APIs', 'Axios'],
     gradient: 'from-accent-500/20 to-primary-500/20',
+    image: 'campaign-management.svg',
   },
   {
     title: 'Inventory Management Application',
@@ -30,6 +33,7 @@ export const projects: Project[] = [
       'Full-stack application using .NET and modern frontend technologies for inventory tracking, CRUD operations, and data persistence.',
     techStack: ['.NET', 'C#', 'React', 'SQL Server'],
     gradient: 'from-primary-400/20 to-accent-400/20',
+    image: 'inventory-management.svg',
   },
   {
     title: 'Excel Integration Application',
@@ -38,6 +42,7 @@ export const projects: Project[] = [
       'Excel-based functionality and data export workflows enabling spreadsheet generation, data transformation, and automated export pipelines.',
     techStack: ['React', 'TypeScript', 'Excel Export'],
     gradient: 'from-accent-400/20 to-primary-400/20',
+    image: 'excel-integration.svg',
   },
   {
     title: 'Enterprise API & Microservices',
@@ -46,5 +51,6 @@ export const projects: Project[] = [
       'Backend services, REST API integrations, and application architecture built on .NET microservices with logging, exception handling, and refactoring.',
     techStack: ['C#', '.NET', 'Microservices', 'REST APIs'],
     gradient: 'from-primary-500/20 to-accent-400/20',
+    image: 'api-microservices.svg',
   },
 ];

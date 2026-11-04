@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-label="Campaign management dashboard with charts and statistics">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="1" stop-color="#151A33"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#4F8CFF"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4F8CFF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#4F8CFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="240" fill="url(#bg)"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="0" width="54" height="240" fill="#ffffff" fill-opacity="0.04"/>
+  <rect x="14" y="16" width="26" height="26" rx="7" fill="url(#acc)"/>
+  <rect x="16" y="62" width="22" height="6" rx="3" fill="#ffffff" fill-opacity="0.35"/>
+  <rect x="16" y="82" width="22" height="6" rx="3" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="16" y="102" width="22" height="6" rx="3" fill="#ffffff" fill-opacity="0.15"/>
+  <rect x="16" y="122" width="22" height="6" rx="3" fill="#ffffff" fill-opacity="0.15"/>
+
+  <!-- header -->
+  <rect x="70" y="16" width="120" height="10" rx="5" fill="#ffffff" fill-opacity="0.4"/>
+  <rect x="380" y="12" width="84" height="20" rx="10" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.12"/>
+  <circle cx="392" cy="22" r="4" fill="#34D399"/>
+  <rect x="402" y="19" width="50" height="6" rx="3" fill="#ffffff" fill-opacity="0.3"/>
+
+  <!-- stat cards -->
+  <g>
+    <rect x="70" y="44" width="120" height="48" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="82" y="62" font-family="Arial, sans-serif" font-size="9" fill="#94A3B8">Active Campaigns</text>
+    <text x="82" y="82" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">128</text>
+    <rect x="204" y="44" width="120" height="48" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="216" y="62" font-family="Arial, sans-serif" font-size="9" fill="#94A3B8">Reach</text>
+    <text x="216" y="82" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">2.4M</text>
+    <rect x="338" y="44" width="126" height="48" rx="10" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="350" y="62" font-family="Arial, sans-serif" font-size="9" fill="#94A3B8">Engagement</text>
+    <text x="350" y="82" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#34D399">+18%</text>
+  </g>
+
+  <!-- line chart -->
+  <rect x="70" y="104" width="254" height="124" rx="10" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.1"/>
+  <path d="M84 206 L120 184 L156 192 L192 160 L228 168 L264 134 L310 142 L310 214 L84 214 Z" fill="url(#area)"/>
+  <path d="M84 206 L120 184 L156 192 L192 160 L228 168 L264 134 L310 142" fill="none" stroke="#7FA8FF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="264" cy="134" r="4" fill="#A855F7"/>
+
+  <!-- bar chart -->
+  <rect x="338" y="104" width="126" height="124" rx="10" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.1"/>
+  <rect x="352" y="170" width="14" height="44" rx="3" fill="url(#acc)"/>
+  <rect x="374" y="146" width="14" height="68" rx="3" fill="url(#acc)"/>
+  <rect x="396" y="158" width="14" height="56" rx="3" fill="url(#acc)"/>
+  <rect x="418" y="124" width="14" height="90" rx="3" fill="url(#acc)"/>
+  <rect x="440" y="140" width="14" height="74" rx="3" fill="url(#acc)"/>
+</svg>

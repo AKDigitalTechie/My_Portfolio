@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, X, Layers } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { SectionHeading, StaggerContainer, StaggerItem } from '@/components/ui/Reveal';
 import { Project } from '@/data/projects';
@@ -26,11 +26,14 @@ export function Projects() {
                 style={{ perspective: '1000px' }}
               >
                 {/* Visual representation */}
-                <div className={`relative h-40 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-                  <div className="absolute inset-0 bg-grid opacity-30" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Layers className="h-16 w-16 text-white/10 group-hover:text-white/20 group-hover:scale-110 transition-all duration-500" />
-                  </div>
+                <div className={`relative h-44 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                  <img
+                    src={`${import.meta.env.BASE_URL}projects/${project.image}`}
+                    alt={`${project.title} preview`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg/60 via-transparent to-bg/20" />
                   <div className="absolute top-4 left-4">
                     <span className="text-xs font-mono px-2.5 py-1 rounded-full glass text-text-muted">
                       {project.category}
@@ -86,7 +89,7 @@ export function Projects() {
                 </div>
                 <h3 className="font-display font-semibold text-lg">Let's Connect</h3>
                 <p className="text-sm text-text-muted max-w-[200px]">
-                  Interested in my work? Let's discuss how I can contribute to your team.
+                  Interested in my experience? Let's talk about how I can contribute to your team.
                 </p>
               </div>
             </a>
@@ -119,6 +122,11 @@ export function Projects() {
                 <X className="h-4 w-4" />
               </button>
 
+              <img
+                src={`${import.meta.env.BASE_URL}projects/${selected.image}`}
+                alt={`${selected.title} preview`}
+                className="w-full h-44 object-cover rounded-xl border border-white/10 mb-5"
+              />
               <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-primary-500/10 text-primary-400">
                 {selected.category}
               </span>

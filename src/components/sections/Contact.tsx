@@ -104,12 +104,12 @@ export function Contact() {
         <div className="text-center mb-16">
           <Reveal>
             <h2 className="section-heading text-balance">
-              Let's build something <span className="gradient-text">amazing</span> together.
+              Open to new <span className="gradient-text">opportunities</span>. Let's connect.
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="section-subheading mx-auto mt-4">
-              I'm always interested in discussing exciting engineering opportunities, innovative products, and challenging software development problems.
+              Whether you're a recruiter or a hiring manager, I'd love to hear about software engineering roles and teams where I can contribute.
             </p>
           </Reveal>
         </div>
@@ -235,7 +235,7 @@ export function Contact() {
                   className={`w-full rounded-xl glass px-4 py-3 text-sm resize-none focus:outline-none focus:border-primary-500/40 transition-colors ${
                     errors.message ? 'border-red-400/40' : ''
                   }`}
-                  placeholder="Tell me about your opportunity or project..."
+                  placeholder="Tell me about the role or opportunity..."
                 />
                 {errors.message && <p className="text-xs text-red-400 mt-1.5">{errors.message}</p>}
               </div>
