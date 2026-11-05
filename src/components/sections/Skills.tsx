@@ -19,7 +19,7 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 export function Skills() {
   return (
     <section id="skills" className="relative section-padding overflow-hidden">
-      <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-accent-500/5 blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] blob-accent opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="A comprehensive technology ecosystem spanning frontend, backend, databases, cloud, and testing.">

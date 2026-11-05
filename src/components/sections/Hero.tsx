@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
-  ArrowDown, Download, MapPin, Building2, Briefcase,
+  ArrowDown, Download, MapPin, Building2, Briefcase, Code2,
 } from 'lucide-react';
 import { SiReact, SiAngular, SiTypescript, SiDotnet, SiMongodb } from 'react-icons/si';
 import { DiMsqlServer } from 'react-icons/di';
 import { VscAzureDevops } from 'react-icons/vsc';
+import { handleResumeClick } from '@/lib/resume';
 import type { IconType } from 'react-icons';
 import { profile } from '@/data/profile';
 
@@ -46,10 +47,9 @@ function TechIcons({ size, className = '' }: { size: 'sm' | 'lg'; className?: st
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 + i * 0.07 }}
         >
-          <motion.div
-            animate={{ y: [0, -4, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: i * 0.25 }}
-            className={`group relative flex ${tile} items-center justify-center rounded-xl glass hover:bg-white/[0.08] hover:border-primary-500/40 transition-colors`}
+          <div
+            className={`group relative flex ${tile} items-center justify-center rounded-xl glass hover:bg-white/[0.08] hover:border-primary-500/40 transition-colors animate-float-sm`}
+            style={{ animationDelay: `${i * 0.25}s` }}
             aria-label={tech.label}
           >
             {tech.icon ? (
@@ -67,9 +67,22 @@ function TechIcons({ size, className = '' }: { size: 'sm' | 'lg'; className?: st
             <span className="pointer-events-none absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md glass-strong px-2 py-1 text-[11px] font-mono text-text opacity-0 group-hover:opacity-100 transition-opacity">
               {tech.label}
             </span>
-          </motion.div>
+          </div>
         </motion.div>
       ))}
+    </div>
+  );
+}
+
+function HeroCredit() {
+  return (
+    <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 font-mono text-xs text-text-muted">
+      <span className="flex h-5 w-5 items-center justify-center rounded-md bg-gradient-to-br from-primary-500 to-accent-500">
+        <Code2 className="h-3 w-3 text-white" strokeWidth={2.5} />
+      </span>
+      <span>
+        Designed &amp; developed by <span className="gradient-text font-semibold">Ajay Kumar</span>
+      </span>
     </div>
   );
 }
@@ -89,8 +102,8 @@ export function Hero({ onReady }: { onReady?: () => void }) {
       {/* Background layer */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary-500/15 blur-[120px]" />
-        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] rounded-full bg-accent-500/15 blur-[100px]" />
+        <div className="absolute right-[10%] top-1/2 -translate-y-1/2 h-[500px] w-[500px] blob-primary" />
+        <div className="absolute right-1/4 top-1/3 h-[300px] w-[300px] blob-accent" />
       </div>
 
       {/* Profile photo */}
@@ -106,6 +119,9 @@ export function Hero({ onReady }: { onReady?: () => void }) {
             <img
               src={`${import.meta.env.BASE_URL}profile.jpg`}
               alt={profile.name}
+              decoding="async"
+              width={340}
+              height={340}
               className="h-[300px] w-[300px] xl:h-[340px] xl:w-[340px] rounded-3xl object-cover"
             />
           </div>
@@ -175,7 +191,12 @@ export function Hero({ onReady }: { onReady?: () => void }) {
               Explore My Work
               <ArrowDown className="h-4 w-4" />
             </button>
-            <a href={profile.resumeUrl} download={profile.resumeFileName} className="btn-secondary">
+            <a
+              href={profile.resumeUrl}
+              download={profile.resumeFileName}
+              onClick={handleResumeClick}
+              className="btn-secondary"
+            >
               <Download className="h-4 w-4" />
               Download Resume
             </a>
@@ -200,6 +221,10 @@ export function Hero({ onReady }: { onReady?: () => void }) {
               </div>
             ))}
           </motion.div>
+
+          <div className="lg:hidden mt-8">
+            <HeroCredit />
+          </div>
         </div>
       </div>
 
@@ -219,6 +244,16 @@ export function Hero({ onReady }: { onReady?: () => void }) {
           />
         </div>
       </motion.div>
+
+      {/* Credit (desktop) */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+        className="hidden lg:block absolute bottom-8 right-20 xl:right-32 z-10"
+      >
+        <HeroCredit />
+      </motion.div>
       </div>
 
       {/* Mobile / tablet: photo, availability and tech icons (below the scroll indicator) */}
@@ -236,6 +271,10 @@ export function Hero({ onReady }: { onReady?: () => void }) {
               <img
                 src={`${import.meta.env.BASE_URL}profile.jpg`}
                 alt={profile.name}
+                loading="lazy"
+                decoding="async"
+                width={224}
+                height={224}
                 className="h-48 w-48 sm:h-56 sm:w-56 rounded-2xl object-cover"
               />
             </div>

@@ -17,6 +17,16 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+        },
+      },
+    },
+  },
   server: {
     watch: {
       // Skip locked media files sitting directly in the project root (not public/ or src/)

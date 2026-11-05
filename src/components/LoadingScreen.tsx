@@ -13,11 +13,11 @@ export function LoadingScreen({ progress, isLoading }: LoadingScreenProps) {
         <motion.div
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: 'easeInOut' } }}
+          exit={{ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } }}
         >
           <div className="absolute inset-0 bg-grid opacity-20" />
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-primary-500/10 blur-[100px]" />
-          <div className="absolute left-1/3 top-1/3 h-[300px] w-[300px] rounded-full bg-accent-500/10 blur-[120px]" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[400px] w-[400px] blob-primary" />
+          <div className="absolute left-1/3 top-1/3 h-[300px] w-[300px] blob-accent" />
 
           <motion.div
             className="relative z-10 flex flex-col items-center gap-8"

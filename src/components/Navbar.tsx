@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, Code2 } from 'lucide-react';
 import { navLinks } from '@/data/navigation';
 import { profile } from '@/data/profile';
+import { handleResumeClick } from '@/lib/resume';
 import { useActiveSection } from '@/hooks/useActiveSection';
 import { useScrollProgress } from '@/hooks/useScrollProgress';
 
+const sectionIds = navLinks.map((l) => l.id);
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeSection = useActiveSection(navLinks.map((l) => l.id));
-  const scrollProgress = useScrollProgress();
+  const activeSection = useActiveSection(sectionIds);
+  const progressRef = useRef<HTMLDivElement>(null);
+  useScrollProgress(progressRef);
 
   const handleNavClick = (id: string) => {
     setIsOpen(false);
@@ -27,7 +31,11 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-6xl">
           <div className="relative glass-strong rounded-2xl px-4 py-3 md:px-6 md:py-3.5">
-            <div className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-primary-500 to-accent-500" style={{ width: `${scrollProgress}%` }} />
+            <div
+              ref={progressRef}
+              className="absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gradient-to-r from-primary-500 to-accent-500"
+              style={{ transform: 'scaleX(0)' }}
+            />
 
             <div className="flex items-center justify-between">
               <button
@@ -67,6 +75,7 @@ export function Navbar() {
                 <a
                   href={profile.resumeUrl}
                   download={profile.resumeFileName}
+                  onClick={handleResumeClick}
                   className="hidden md:inline-flex btn-primary text-sm py-2 px-4"
                 >
                   <Download className="h-4 w-4" />
@@ -127,6 +136,7 @@ export function Navbar() {
                 <a
                   href={profile.resumeUrl}
                   download={profile.resumeFileName}
+                  onClick={handleResumeClick}
                   className="btn-primary mt-4 w-full text-sm"
                 >
                   <Download className="h-4 w-4" />

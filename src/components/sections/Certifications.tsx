@@ -6,7 +6,7 @@ import { Reveal, SectionHeading, StaggerContainer, StaggerItem } from '@/compone
 export function Certifications() {
   return (
     <section id="certifications" className="relative section-padding overflow-hidden">
-      <div className="absolute bottom-0 left-1/4 h-[400px] w-[400px] rounded-full bg-primary-500/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-1/4 h-[400px] w-[400px] blob-primary opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="Professional certifications, recognition awards, and academic foundation.">

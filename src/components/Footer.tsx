@@ -13,7 +13,7 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-white/5 overflow-hidden">
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[200px] w-[600px] rounded-full bg-primary-500/5 blur-[100px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[200px] w-[600px] blob-primary opacity-50" />
 
       <div className="relative mx-auto max-w-6xl px-6 md:px-12 lg:px-20 py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">

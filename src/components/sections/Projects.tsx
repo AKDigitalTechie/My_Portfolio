@@ -10,7 +10,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="relative section-padding overflow-hidden">
-      <div className="absolute top-1/3 right-0 h-[500px] w-[500px] rounded-full bg-accent-500/5 blur-[140px]" />
+      <div className="absolute top-1/3 right-0 h-[500px] w-[500px] blob-accent opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="Selected projects from professional experience — built with modern technologies and enterprise-grade architecture.">

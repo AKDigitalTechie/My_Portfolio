@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Copy, Check, Send, Download } from 'lucide-react';
 import { profile } from '@/data/profile';
+import { handleResumeClick } from '@/lib/resume';
 import { Reveal } from '@/components/ui/Reveal';
 
 interface FormData {
@@ -97,8 +98,8 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative section-padding overflow-hidden">
-      <div className="absolute top-1/4 right-0 h-[500px] w-[500px] rounded-full bg-primary-500/5 blur-[140px]" />
-      <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-accent-500/5 blur-[120px]" />
+      <div className="absolute top-1/4 right-0 h-[500px] w-[500px] blob-primary opacity-50" />
+      <div className="absolute bottom-0 left-0 h-[400px] w-[400px] blob-accent opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <div className="text-center mb-16">
@@ -177,6 +178,7 @@ export function Contact() {
                 <a
                   href={profile.resumeUrl}
                   download={profile.resumeFileName}
+                  onClick={handleResumeClick}
                   className="btn-primary w-full mt-6"
                 >
                   <Download className="h-4 w-4" />

@@ -14,7 +14,7 @@ export function About() {
 
   return (
     <section id="about" className="relative section-padding overflow-hidden">
-      <div className="absolute top-0 left-1/4 h-[400px] w-[400px] rounded-full bg-primary-500/5 blur-[120px]" />
+      <div className="absolute top-0 left-1/4 h-[400px] w-[400px] blob-primary opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="Get to know the engineer behind the code.">

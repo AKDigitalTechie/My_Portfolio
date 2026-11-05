@@ -13,14 +13,8 @@ export function CustomCursor() {
 
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
-
-    const onMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-      }
-    };
+    let raf = 0;
+    let running = false;
 
     const animate = () => {
       ringX += (mouseX - ringX) * 0.15;
@@ -28,7 +22,23 @@ export function CustomCursor() {
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ringX}px, ${ringY}px)`;
       }
-      requestAnimationFrame(animate);
+      if (Math.abs(mouseX - ringX) > 0.1 || Math.abs(mouseY - ringY) > 0.1) {
+        raf = requestAnimationFrame(animate);
+      } else {
+        running = false;
+      }
+    };
+
+    const onMove = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      }
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(animate);
+      }
     };
 
     const onHover = () => {
@@ -44,8 +54,7 @@ export function CustomCursor() {
       el.addEventListener('mouseleave', onLeave);
     });
 
-    window.addEventListener('mousemove', onMove);
-    const raf = requestAnimationFrame(animate);
+    window.addEventListener('mousemove', onMove, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', onMove);

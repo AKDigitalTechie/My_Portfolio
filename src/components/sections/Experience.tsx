@@ -14,7 +14,7 @@ export function Experience() {
 
   return (
     <section id="experience" className="relative section-padding overflow-hidden">
-      <div className="absolute top-1/4 left-0 h-[400px] w-[400px] rounded-full bg-primary-500/5 blur-[120px]" />
+      <div className="absolute top-1/4 left-0 h-[400px] w-[400px] blob-primary opacity-50" />
 
       <div className="mx-auto max-w-6xl">
         <SectionHeading subtitle="A progressive career journey across enterprise software, full-stack development, and industrial automation.">
